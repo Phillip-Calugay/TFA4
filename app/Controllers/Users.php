@@ -22,12 +22,14 @@ class Users extends BaseController
             $rules = [
                 'username' => 'required|alpha_numeric_punct|max_length[50]|is_unique[users.username]',
                 'full_name' => 'required|max_length[100]',
+                'password' => 'required|min_length[8]|max_length[255]',
             ];
 
             if ($this->validate($rules)) {
                 (new UserModel())->insert([
                     'username' => trim((string) $this->request->getPost('username')),
                     'full_name' => trim((string) $this->request->getPost('full_name')),
+                    'password' => password_hash((string) $this->request->getPost('password'), PASSWORD_DEFAULT),
                     'created_at' => date('Y-m-d H:i:s'),
                 ]);
 
@@ -51,6 +53,7 @@ class Users extends BaseController
             $rules = [
                 'username' => "required|alpha_numeric_punct|max_length[50]|is_unique[users.username,id,{$id}]",
                 'full_name' => 'required|max_length[100]',
+                'password' => 'permit_empty|min_length[8]|max_length[255]',
                 'avatar' => 'permit_empty|is_image[avatar]|mime_in[avatar,image/jpg,image/jpeg,image/png]|max_size[avatar,2048]',
             ];
 
@@ -59,6 +62,10 @@ class Users extends BaseController
                     'username' => trim((string) $this->request->getPost('username')),
                     'full_name' => trim((string) $this->request->getPost('full_name')),
                 ];
+                $password = (string) $this->request->getPost('password');
+                if ($password !== '') {
+                    $update['password'] = password_hash($password, PASSWORD_DEFAULT);
+                }
                 $avatar = $this->request->getFile('avatar');
 
                 if ($avatar !== null && $avatar->isValid() && ! $avatar->hasMoved()) {

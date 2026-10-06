@@ -16,8 +16,9 @@ CREATE TABLE `users` (
   `id` INT AUTO_INCREMENT PRIMARY KEY,
   `username` VARCHAR(50) NOT NULL UNIQUE,
   `full_name` VARCHAR(100) NOT NULL,
+  `password` VARCHAR(255) NOT NULL,
   `avatar` VARCHAR(255) NULL,
   `created_at` DATETIME NOT NULL
 );
-INSERT INTO `users` (`username`, `full_name`, `created_at`) VALUES
-('admin', 'Alex Mendoza', '2026-09-22 09:00:00'), ('cashier1', 'Carlos Ramos', '2026-09-22 09:00:00'), ('cashier2', 'Diane Torres', '2026-09-22 09:00:00'), ('manager1', 'Bianca Flores', '2026-09-22 09:00:00'), ('stock1', 'Ethan Bautista', '2026-09-22 09:00:00');
+INSERT INTO `users` (`username`, `full_name`, `password`, `created_at`) VALUES
+('admin', 'Alex Mendoza', '$2y$10$tJqNq32NpRZPouRvVCrcRunRsiEqNxlrGWuqvUrfkRImkqflpCO1K', '2026-09-22 09:00:00'), ('cashier1', 'Carlos Ramos', '$2y$10$tJqNq32NpRZPouRvVCrcRunRsiEqNxlrGWuqvUrfkRImkqflpCO1K', '2026-09-22 09:00:00'), ('cashier2', 'Diane Torres', '$2y$10$tJqNq32NpRZPouRvVCrcRunRsiEqNxlrGWuqvUrfkRImkqflpCO1K', '2026-09-22 09:00:00'), ('manager1', 'Bianca Flores', '$2y$10$tJqNq32NpRZPouRvVCrcRunRsiEqNxlrGWuqvUrfkRImkqflpCO1K', '2026-09-22 09:00:00'), ('stock1', 'Ethan Bautista', '$2y$10$tJqNq32NpRZPouRvVCrcRunRsiEqNxlrGWuqvUrfkRImkqflpCO1K', '2026-09-22 09:00:00');

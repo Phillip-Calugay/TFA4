@@ -8,6 +8,8 @@
     <?= csrf_field() ?>
     <label>Username <input type="text" name="username" value="<?= esc(old('username', $user['username'] ?? '')) ?>" required maxlength="50"></label>
     <label>Full name <input type="text" name="full_name" value="<?= esc(old('full_name', $user['full_name'] ?? '')) ?>" required maxlength="100"></label>
+    <label>Password <input type="password" name="password" <?= $isEdit ? '' : 'required' ?> minlength="8" maxlength="255" autocomplete="new-password"></label>
+    <small><?= $isEdit ? 'Leave blank to keep the current password.' : 'Use at least 8 characters.' ?></small>
     <?php if ($isEdit): ?>
         <label>Profile picture <input type="file" name="avatar" accept="image/jpeg,image/png"></label>
         <small>Optional JPG or PNG image, maximum 2 MB. It will be prepared as a 300 × 300 thumbnail.</small>

@@ -19,11 +19,11 @@ class PosAccountsSeeder extends Seeder
         ]);
 
         $this->db->table('users')->insertBatch([
-            ['username' => 'admin', 'full_name' => 'Alex Mendoza', 'created_at' => $createdAt],
-            ['username' => 'cashier1', 'full_name' => 'Carlos Ramos', 'created_at' => $createdAt],
-            ['username' => 'cashier2', 'full_name' => 'Diane Torres', 'created_at' => $createdAt],
-            ['username' => 'manager1', 'full_name' => 'Bianca Flores', 'created_at' => $createdAt],
-            ['username' => 'stock1', 'full_name' => 'Ethan Bautista', 'created_at' => $createdAt],
+            ['username' => 'admin', 'full_name' => 'Alex Mendoza', 'password' => password_hash('password', PASSWORD_DEFAULT), 'created_at' => $createdAt],
+            ['username' => 'cashier1', 'full_name' => 'Carlos Ramos', 'password' => password_hash('password', PASSWORD_DEFAULT), 'created_at' => $createdAt],
+            ['username' => 'cashier2', 'full_name' => 'Diane Torres', 'password' => password_hash('password', PASSWORD_DEFAULT), 'created_at' => $createdAt],
+            ['username' => 'manager1', 'full_name' => 'Bianca Flores', 'password' => password_hash('password', PASSWORD_DEFAULT), 'created_at' => $createdAt],
+            ['username' => 'stock1', 'full_name' => 'Ethan Bautista', 'password' => password_hash('password', PASSWORD_DEFAULT), 'created_at' => $createdAt],
         ]);
     }
 }

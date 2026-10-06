@@ -53,6 +53,7 @@
         <a href="<?= site_url('users') ?>">Users</a>
         <a href="<?= site_url('customers/new') ?>">New Customer</a>
         <a href="<?= site_url('users/new') ?>">New User</a>
+        <?php if (session()->get('isLoggedIn')): ?><a href="<?= site_url('logout') ?>">Log out (<?= esc(session()->get('username')) ?>)</a><?php endif; ?>
     </nav>
 </header>
 <main>

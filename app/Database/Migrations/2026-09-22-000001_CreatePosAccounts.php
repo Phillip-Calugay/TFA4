@@ -22,6 +22,7 @@ class CreatePosAccounts extends Migration
             'id' => ['type' => 'INT', 'constraint' => 11, 'unsigned' => true, 'auto_increment' => true],
             'username' => ['type' => 'VARCHAR', 'constraint' => 50],
             'full_name' => ['type' => 'VARCHAR', 'constraint' => 100],
+            'password' => ['type' => 'VARCHAR', 'constraint' => 255],
             'created_at' => ['type' => 'DATETIME'],
         ]);
         $this->forge->addKey('id', true);
