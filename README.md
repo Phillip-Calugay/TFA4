@@ -25,6 +25,8 @@ A CodeIgniter 4 point-of-sale account demo backed by MySQL. Customer and user re
 
 The seeded accounts all use the demo password `password` (for example, `admin` / `password`). Passwords are stored with `password_hash()` and checked with `password_verify()`; never use the demo password in a production deployment.
 
+For hosted deployments, set `app.baseURL` in the server `.env` to the complete URL, including the scheme, for example `app.baseURL = 'https://phillip-calugay-tfa4.freedev.app/'`. The application also normalizes a host-only value to HTTPS to prevent CodeIgniter's invalid URL configuration error.
+
 Uploaded avatars are validated as JPG/PNG files no larger than 2 MB, resized to a 300 × 300 display-ready thumbnail, and saved under `public/uploads`. Only the generated filename is stored in the database.
 
 The repository includes both the SQL database export and CodeIgniter migration/seeder files for reproducible setup.

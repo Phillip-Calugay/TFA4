@@ -6,6 +6,21 @@ use CodeIgniter\Config\BaseConfig;
 
 class App extends BaseConfig
 {
+    public function __construct()
+    {
+        parent::__construct();
+
+        // InfinityFree and similar hosting panels may omit the URL scheme.
+        // CodeIgniter requires an absolute base URL, so normalize a host-only
+        // value while retaining the configured scheme when one is provided.
+        $baseURL = trim($this->baseURL);
+        if ($baseURL !== '' && ! preg_match('#^[a-z][a-z0-9+.-]*://#i', $baseURL)) {
+            $baseURL = 'https://' . ltrim($baseURL, '/');
+        }
+
+        $this->baseURL = rtrim($baseURL, '/') . '/';
+    }
+
     /**
      * --------------------------------------------------------------------------
      * Base Site URL
